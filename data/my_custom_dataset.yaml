@@ -1,0 +1,11 @@
+train: images/train
+val: images/val
+nc: 7
+names:
+  - card_title
+  - card_art
+  - card_type
+  - card_set_symbol
+  - card_mana_cost
+  - card_oracle_text
+  - card_power_toughness

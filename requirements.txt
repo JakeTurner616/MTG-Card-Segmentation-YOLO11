@@ -1,0 +1,3 @@
+ultralytics
+requests
+opencv-python

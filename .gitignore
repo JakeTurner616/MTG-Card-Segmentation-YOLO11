@@ -1,0 +1,43 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Logs and output files
+*.log
+*.out
+
+# Raw dataset files (zip archives and unzipped raw dataset folders)
+data/*.zip
+dataset.zip
+annotations.zip
+Control\ annotations.zip
+data/raw_dataset/
+data/raw_annotations/
+
+# Processed data that you don't want versioned
+data/annotations/
+data/control_annotations/
+data/images/
+data/labels/
+inference_results/
+
+# YOLO training outputs 
+runs/
+weights/
+
+# YOLO11n model should be downloaded by the user
+yolo11n.pt
+
+# OS-specific files
+.DS_Store
+Thumbs.db
