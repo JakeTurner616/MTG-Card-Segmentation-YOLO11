@@ -1,33 +1,34 @@
-# YOLO11 MTG Card Segmentation
+<p align="center">
+  <img width="40%" src="docs/result.jpg">
+</p>
 
-![Result Image](docs/result.jpg)
+## MTG-Card-Segmentation-YOLO11
 
-**Overview:**  
+## **Overview:**  
 This project provides a simple end-to-end pipeline for training a custom YOLO11 model that segments high-resolution Magic: The Gathering card scans into key visual components. The model is trained to detect 7 card elements—**card_title**, **card_art**, **card_type**, **card_set_symbol**, **card_mana_cost**, **card_oracle_text**, and **card_power_toughness**—so that it can accurately locate these segments in new, unseen card images.
 
----
 
 ## Workflow
 
 1. **Data Download & Extraction**  
    - **Script:** `unzip-dataset.py`  
-   Downloads the raw ZIP files (images, training annotations, and validation annotations) if they don’t already exist, then extracts the contents from their subfolders into designated directories.
+     Downloads the raw ZIP files (images, training annotations, and validation annotations) if they don’t already exist, then extracts the contents from their subfolders (or directly from the root for the images ZIP) into designated directories.
 
 2. **Annotation Conversion & Data Splitting**  
    - **Script:** `convert-dataset.py`  
-   Converts XML annotation files into YOLO-format labels. The script processes training annotations (from `data/annotations`) and validation annotations (from `data/control_annotations`) separately, copying the corresponding images into `data/images/train` and `data/images/val` while saving the labels in `data/labels/train` and `data/labels/val`.
+     Converts XML annotation files into YOLO-format labels. The script processes training annotations (from `data/annotations`) and validation annotations (from `data/control_annotations`) separately, copying the corresponding images into `data/images/train` and `data/images/val` while saving the labels in `data/labels/train` and `data/labels/val`.
 
 3. **Dataset Configuration**  
    - **Script:** `setup-yolo11-yaml.py`  
-   Generates the YAML configuration file (`my_custom_dataset.yaml`) for YOLO11. This file specifies the relative paths to the training (`images/train`) and validation (`images/val`) image directories, the number of classes (`nc: 7`), and the class names.
+     Generates the YAML configuration file (`my_custom_dataset.yaml`) for YOLO11. This file specifies the relative paths to the training (`images/train`) and validation (`images/val`) image directories, the number of classes (`nc: 7`), and the class names.
 
 4. **Model Training**  
    - **Script:** `train-yolo.py`  
-   Loads a pretrained YOLO11 model and fine-tunes it on your custom dataset as defined in the YAML file. Training parameters such as epochs and image size are configured within the script.
+     Loads a pretrained YOLO11 model and fine-tunes it on your custom dataset as defined in the YAML file. Training parameters such as epochs and image size are configured within the script.
 
 5. **Inference**  
    - **Script:** `detect_image.py`  
-   Loads the trained model and performs inference on a new, unannotated card image. The script displays the image with bounding boxes around detected card elements and saves the output image for review.
+     Loads the trained model and performs inference on a new, unannotated card image. The script displays the image with bounding boxes around detected card elements and saves the output image for review.
 
 ---
 
@@ -48,7 +49,6 @@ This project provides a simple end-to-end pipeline for training a custom YOLO11 
    ```bash
    pip install -r requirements.txt
    ```
-
 
 ---
 
@@ -83,15 +83,16 @@ This project provides a simple end-to-end pipeline for training a custom YOLO11 
 
 ## Resources
 
-- **Dataset:**  
+- **Dataset (HuggingFace):**  
   [MTG Face Objects Classification Dataset](https://huggingface.co/datasets/JakeTurner616/mtg_face_objects_classifcation)
 
-- **Pre-trained Model:**  
+- **Pre-trained Model (HuggingFace):**  
   [MTG Card Segmentation YOLO11 Model](https://huggingface.co/JakeTurner616/mtg-card-segmentation-yolo11)
 
 ---
 
 ## Results
 
-- **Training Metrics:**  
-![Results graph](docs/results.png)
+<div align="center">
+  <img src="docs/results.png" alt="Training Metrics Graph" width="300px"/>
+</div>
